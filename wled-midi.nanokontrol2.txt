@@ -1,0 +1,95 @@
+# wled-midi — Bome MIDI Translator — Korg nanoKONTROL2 preset
+#
+# The 8 SLIDERS drive the 8 wled-midi CCs (bri/cct/hue/sat/fx/sx/ix/pal) — the natural
+# "8 continuous controls" mapping. Buttons are left as a documented target table for you
+# to CAPTURE (their factory CC numbers vary by loaded scene/firmware, so we don't hardcode
+# them — read yours in ShowMIDI, then Capture onto the matching translator below).
+#
+# ┌ VERIFY FIRST ────────────────────────────────────────────────────────────────────┐
+# │ These sliders assume the nanoKONTROL2 CC-mode DEFAULT: sliders = CC 0..7 on ch1.  │
+# │ Put the device in CC mode (KORG KONTROL Editor) and confirm with ShowMIDI. If     │
+# │ your sliders send different CC numbers, edit the incoming CC in the 8 blocks below.│
+# └───────────────────────────────────────────────────────────────────────────────────┘
+#
+# Route: In = nanoKONTROL2, Out = "OpenLamp" virtual port.
+# Notation: B0 = CC ch1, pp = pass-through value.
+# ---------------------------------------------------------------------------------------
+
+## --- 8 sliders -> wled-midi CC 1-8 (value passes through) ---
+
+Translator 0: Slider 1 -> Brightness (CC1)
+Incoming: B0 00 pp
+Outgoing: B0 01 pp
+
+Translator 1: Slider 2 -> Colour temperature (CC2)
+Incoming: B0 01 pp
+Outgoing: B0 02 pp
+
+Translator 2: Slider 3 -> Hue (CC3)
+Incoming: B0 02 pp
+Outgoing: B0 03 pp
+
+Translator 3: Slider 4 -> Saturation (CC4)
+Incoming: B0 03 pp
+Outgoing: B0 04 pp
+
+Translator 4: Slider 5 -> Effect (CC5)
+Incoming: B0 04 pp
+Outgoing: B0 05 pp
+
+Translator 5: Slider 6 -> Effect speed (CC6)
+Incoming: B0 05 pp
+Outgoing: B0 06 pp
+
+Translator 6: Slider 7 -> Effect intensity (CC7)
+Incoming: B0 06 pp
+Outgoing: B0 07 pp
+
+Translator 7: Slider 8 -> Palette (CC8)
+Incoming: B0 07 pp
+Outgoing: B0 08 pp
+
+# ---------------------------------------------------------------------------------------
+# BUTTONS — capture these (factory CC numbers depend on your scene; read them in ShowMIDI,
+# then Incoming → Capture onto each translator). Suggested layout:
+#
+#   Solo 1..8   -> Looks: red, orange, yellow, green, cyan, blue, magenta, white
+#                  (outgoing 90 3C 7F, 90 3D 7F, ... 90 43 7F)
+#   Mute 1..3   -> Util: On (90 32 7F), Off (90 30 7F), Toggle (90 34 7F)
+#   Mute 4      -> Util: Blackout (90 35 7F)   ·   Mute 5 -> Restore (90 37 7F)
+#   Rec  1      -> Modifier: Beat (90 48 7F)   ·   Rec 2 -> Flash (90 49 7F)
+#   Transport Play/Stop, Track </> -> free (bank/target-channel switching)
+#
+# The 8 Solo-button translators, ready to capture (incoming = placeholder on ch16):
+
+Translator 8: Solo 1 -> Look Red
+Incoming: 9F 20 7F
+Outgoing: 90 3C 7F
+
+Translator 9: Solo 2 -> Look Orange
+Incoming: 9F 21 7F
+Outgoing: 90 3D 7F
+
+Translator 10: Solo 3 -> Look Yellow
+Incoming: 9F 22 7F
+Outgoing: 90 3E 7F
+
+Translator 11: Solo 4 -> Look Green
+Incoming: 9F 23 7F
+Outgoing: 90 3F 7F
+
+Translator 12: Solo 5 -> Look Cyan
+Incoming: 9F 24 7F
+Outgoing: 90 40 7F
+
+Translator 13: Solo 6 -> Look Blue
+Incoming: 9F 25 7F
+Outgoing: 90 41 7F
+
+Translator 14: Solo 7 -> Look Magenta
+Incoming: 9F 26 7F
+Outgoing: 90 42 7F
+
+Translator 15: Solo 8 -> Look White
+Incoming: 9F 27 7F
+Outgoing: 90 43 7F

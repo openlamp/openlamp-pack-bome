@@ -1,0 +1,133 @@
+# wled-midi — Bome MIDI Translator — GENERIC TEMPLATE
+#
+# One translator per wled-midi action. The OUTGOING message is the correct wled-midi
+# message (do not change it, except the channel nibble to target a lamp group). The
+# INCOMING message is a PLACEHOLDER on MIDI channel 16 — replace it by clicking the
+# translator's Incoming tab → Capture → press your controller's button/move its control.
+#
+# Paste these blocks into a Bome MIDI Translator Pro preset (copy a block, select the
+# preset, Ctrl/Cmd-V). Route the preset: In = your controller, Out = the "OpenLamp"
+# virtual port your wled-midi implementation listens on.
+#
+# Notation:  90 = Note-On ch1   B0 = CC ch1   C0 = Program Change ch1
+#            7F = velocity 127   pp = pass-through value variable
+#            9F/BF/CF = the same message types on ch16 (placeholder — capture over it)
+# ---------------------------------------------------------------------------------------
+
+## --- LOOKS (what the lamp shows; mutually exclusive) — notes 59-68 ---
+
+Translator 0: Look - Black (note 59)
+Incoming: 9F 00 7F
+Outgoing: 90 3B 7F
+
+Translator 1: Look - Red (note 60)
+Incoming: 9F 01 7F
+Outgoing: 90 3C 7F
+
+Translator 2: Look - Orange (note 61)
+Incoming: 9F 02 7F
+Outgoing: 90 3D 7F
+
+Translator 3: Look - Yellow (note 62)
+Incoming: 9F 03 7F
+Outgoing: 90 3E 7F
+
+Translator 4: Look - Green (note 63)
+Incoming: 9F 04 7F
+Outgoing: 90 3F 7F
+
+Translator 5: Look - Cyan (note 64)
+Incoming: 9F 05 7F
+Outgoing: 90 40 7F
+
+Translator 6: Look - Blue (note 65)
+Incoming: 9F 06 7F
+Outgoing: 90 41 7F
+
+Translator 7: Look - Magenta (note 66)
+Incoming: 9F 07 7F
+Outgoing: 90 42 7F
+
+Translator 8: Look - White (note 67)
+Incoming: 9F 08 7F
+Outgoing: 90 43 7F
+
+Translator 9: Look - Effect (note 68)
+Incoming: 9F 09 7F
+Outgoing: 90 44 7F
+
+## --- UTIL (power / state) — notes 48-56 ---
+
+Translator 10: Util - Off (note 48)
+Incoming: 9F 0A 7F
+Outgoing: 90 30 7F
+
+Translator 11: Util - On (note 50)
+Incoming: 9F 0B 7F
+Outgoing: 90 32 7F
+
+Translator 12: Util - Toggle (note 52)
+Incoming: 9F 0C 7F
+Outgoing: 90 34 7F
+
+Translator 13: Util - Blackout (note 53)
+Incoming: 9F 0D 7F
+Outgoing: 90 35 7F
+
+Translator 14: Util - Restore (note 55)
+Incoming: 9F 0E 7F
+Outgoing: 90 37 7F
+
+Translator 15: Util - Solid (note 56)
+Incoming: 9F 0F 7F
+Outgoing: 90 38 7F
+
+## --- MODIFIERS (overlay the current look) — notes 72-73 ---
+
+Translator 16: Modifier - Beat toggle (note 72)
+Incoming: 9F 10 7F
+Outgoing: 90 48 7F
+
+Translator 17: Modifier - Flash (note 73)
+Incoming: 9F 11 7F
+Outgoing: 90 49 7F
+
+## --- CC (shape the current look) — CC 1-8, value passes through ---
+
+Translator 18: CC - Brightness (CC 1)
+Incoming: BF 00 pp
+Outgoing: B0 01 pp
+
+Translator 19: CC - Colour temperature (CC 2)
+Incoming: BF 01 pp
+Outgoing: B0 02 pp
+
+Translator 20: CC - Hue (CC 3)
+Incoming: BF 02 pp
+Outgoing: B0 03 pp
+
+Translator 21: CC - Saturation (CC 4)
+Incoming: BF 03 pp
+Outgoing: B0 04 pp
+
+Translator 22: CC - Effect (CC 5)
+Incoming: BF 04 pp
+Outgoing: B0 05 pp
+
+Translator 23: CC - Effect speed (CC 6)
+Incoming: BF 05 pp
+Outgoing: B0 06 pp
+
+Translator 24: CC - Effect intensity (CC 7)
+Incoming: BF 06 pp
+Outgoing: B0 07 pp
+
+Translator 25: CC - Palette (CC 8)
+Incoming: BF 07 pp
+Outgoing: B0 08 pp
+
+## --- PROGRAM CHANGE -> preset (n -> ps = n+1) ---
+
+Translator 26: Program Change - Preset
+Incoming: CF pp
+Outgoing: C0 pp

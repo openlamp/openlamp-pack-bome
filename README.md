@@ -13,7 +13,10 @@ between hardware, virtual ports and DAWs, then speak wled-midi out the other sid
 | File | What it is |
 |---|---|
 | [`wled-midi.generic.txt`](wled-midi.generic.txt) | **Generic template** — one translator per wled-midi action (looks, util, modifiers, CC 1–8, Program Change), each with a *capture-me* placeholder on the incoming side. Controller-agnostic: works with anything once you capture your buttons. |
-| [`wled-midi.nanokontrol2.txt`](wled-midi.nanokontrol2.txt) | **Korg nanoKONTROL2 preset** — the 8 sliders → the 8 wled-midi CCs (bri/cct/hue/sat/fx/sx/ix/pal), plus a documented button-target table to capture. |
+
+> **Controller-specific presets?** The generic template maps to *any* controller in a few minutes
+> via Capture (below), so this pack ships only the generic one. If you build a solid preset for a
+> specific controller, a PR to add it here (with the "verify with ShowMIDI" caveat) is welcome.
 
 > **Why text, not a `.bmtp`?** A `.bmtp` project file is a *signed*, INI-based format that breaks if
 > hand-edited (Bome's own docs warn against it). So this pack ships translators as **plain text you

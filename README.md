@@ -1,12 +1,20 @@
 # wled-midi — Bome MIDI Translator pack
 
-> Turn **any** MIDI controller into a [wled-midi](https://github.com/openlamp/wled-midi) source,
-> with **no code**, using [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator).
+**WLED, from a MIDI Translator user's point of view:** it's open-source firmware for addressable
+LED strips and bulbs that listens on a **local HTTP JSON API** (no cloud). You never touch that
+API here — you just send WLED the **right MIDI**, and a small open convention converts each
+message to the WLED JSON it means (note → colour, CC → brightness/effect, Program Change →
+preset). This pack makes **[Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator)**
+emit that right MIDI from **any** controller, with **no code**.
+
+> **New to WLED? Understand it in 60 seconds** — what it is, its vocabulary, and the whole
+> MIDI→WLED map on one page: the **[WLED + MIDI quick reference »](https://github.com/openlamp/wled-midi/blob/main/docs/quick-reference.md)**.
+> Full spec: **[openlamp/wled-midi »](https://github.com/openlamp/wled-midi)**.
 
 A controller sends whatever MIDI its firmware sends. This pack **re-labels** that MIDI into the
-wled-midi convention (the right notes / CC / Program Change) and emits it on a virtual MIDI port
-your wled-midi implementation listens to. It's the **universal adapter**: merge, split and route
-between hardware, virtual ports and DAWs, then speak wled-midi out the other side.
+[wled-midi](https://github.com/openlamp/wled-midi) convention (the right notes / CC / Program
+Change) and emits it on a virtual MIDI port your wled-midi implementation listens to — merge,
+split and route between hardware, virtual ports and DAWs, then speak wled-midi out the other side.
 
 ## What's in the box
 

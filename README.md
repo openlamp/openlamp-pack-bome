@@ -16,6 +16,12 @@ A controller sends whatever MIDI its firmware sends. This pack **re-labels** tha
 Change) and emits it on a virtual MIDI port your wled-midi implementation listens to — merge,
 split and route between hardware, virtual ports and DAWs, then speak wled-midi out the other side.
 
+> ⚠️ **Disclaimer — alpha, not yet qualified.** This pack is an early **alpha**. The translators
+> are written to the spec but have **not been properly qualified** — not verified end-to-end on a
+> real Bome MIDI Translator install, nor against a physical WLED device. Treat it as a starting
+> point, not a finished product: **test with ShowMIDI before wiring any lights**, expect rough
+> edges, and please report anything that misbehaves. No warranty (see [LICENSE](LICENSE)).
+
 ## What's in the box
 
 | File | What it is |

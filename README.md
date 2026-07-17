@@ -96,3 +96,7 @@ target a group). See the [SPEC](https://github.com/openlamp/wled-midi/blob/main/
 Built on [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator) (not affiliated).
 Part of the [OpenLamp](https://github.com/openlamp) / [wled-midi](https://github.com/openlamp/wled-midi)
 project. MIT licensed — adapt freely.
+
+---
+
+**Two open standards, one bridge.** This implements the open [**wled-midi**](https://github.com/openlamp/wled-midi) convention — the agreed dictionary between [**MIDI**](https://midi.org) (the MIDI Association) and [**WLED**](https://kno.wled.ge). Free for anyone to build on: see the convention's [openness & patent policy](https://github.com/openlamp/wled-midi/blob/main/SPEC.md) (§14) and the [licensing note](https://github.com/openlamp/wled-midi/blob/main/docs/licensing.md). Part of [OpenLamp](https://github.com/openlamp).

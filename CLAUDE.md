@@ -1,7 +1,7 @@
 # CLAUDE.md — openlamp/bome
 
 A **no-code adapter pack** for [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator):
-maps any controller's MIDI onto the [wled-midi](https://github.com/openlamp/openlamp-spec-midi) convention.
+maps any controller's MIDI onto the [OpenLamp MIDI](https://github.com/openlamp/openlamp-spec-midi) spec.
 
 ## What this repo is (and isn't)
 
@@ -12,7 +12,7 @@ maps any controller's MIDI onto the [wled-midi](https://github.com/openlamp/open
 
 ## The contract that must stay correct
 
-The **outgoing** side of every translator IS the wled-midi convention and must match
+The **outgoing** side of every translator IS the OpenLamp MIDI spec and must match
 [SPEC.md](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md) exactly:
 
 - Looks = notes 59–68 (`90 3B 7F` … `90 44 7F`), Util = 48/50/52/53/55/56, Modifiers = 72/73.

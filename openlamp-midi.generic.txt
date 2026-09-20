@@ -1,13 +1,13 @@
-# wled-midi — Bome MIDI Translator — GENERIC TEMPLATE
+# OpenLamp MIDI — Bome MIDI Translator — GENERIC TEMPLATE
 #
-# One translator per wled-midi action. The OUTGOING message is the correct wled-midi
+# One translator per OpenLamp MIDI action. The OUTGOING message is the correct OpenLamp MIDI
 # message (do not change it, except the channel nibble to target a lamp group). The
 # INCOMING message is a PLACEHOLDER on MIDI channel 16 — replace it by clicking the
 # translator's Incoming tab → Capture → press your controller's button/move its control.
 #
 # Paste these blocks into a Bome MIDI Translator Pro preset (copy a block, select the
 # preset, Ctrl/Cmd-V). Route the preset: In = your controller, Out = the "OpenLamp"
-# virtual port your wled-midi implementation listens on.
+# virtual port your OpenLamp MIDI implementation listens on.
 #
 # Notation:  90 = Note-On ch1   B0 = CC ch1   C0 = Program Change ch1
 #            7F = velocity 127   pp = pass-through value variable

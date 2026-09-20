@@ -14,9 +14,9 @@ emit that right MIDI from **any** controller, with **no code**.
 > Full spec: **[openlamp/openlamp-spec-midi »](https://github.com/openlamp/openlamp-spec-midi)**.
 
 A controller sends whatever MIDI its firmware sends. This pack **re-labels** that MIDI into the
-[wled-midi](https://github.com/openlamp/openlamp-spec-midi) convention (the right notes / CC / Program
-Change) and emits it on a virtual MIDI port your wled-midi implementation listens to — merge,
-split and route between hardware, virtual ports and DAWs, then speak wled-midi out the other side.
+[OpenLamp MIDI](https://github.com/openlamp/openlamp-spec-midi) spec (the right notes / CC / Program
+Change) and emits it on a virtual MIDI port your OpenLamp MIDI implementation listens to — merge,
+split and route between hardware, virtual ports and DAWs, then speak OpenLamp MIDI out the other side.
 
 > ⚠️ **Disclaimer — alpha, not yet qualified.** This pack is an early **alpha**. The translators
 > are written to the spec but have **not been properly qualified** — not verified end-to-end on a
@@ -28,7 +28,11 @@ split and route between hardware, virtual ports and DAWs, then speak wled-midi o
 
 | File | What it is |
 |---|---|
-| [`wled-midi.generic.txt`](wled-midi.generic.txt) | **Generic template** — one translator per wled-midi action (looks, util, modifiers, CC 1–8, Program Change), each with a *capture-me* placeholder on the incoming side. Controller-agnostic: works with anything once you capture your buttons. |
+| [`openlamp-midi.generic.txt`](openlamp-midi.generic.txt) | **Generic template** — one translator per OpenLamp MIDI action (looks, util, modifiers, CC 1–8, Program Change), each with a *capture-me* placeholder on the incoming side. Controller-agnostic: works with anything once you capture your buttons. |
+
+> **Renamed 2026-09-20.** This file was `wled-midi.generic.txt` until the spec it targets was
+> renamed from `wled-midi` to **OpenLamp MIDI**. Same translators, same outgoing notes/CC — only
+> the filename changed. If you have the old file, it still works; nothing on the wire moved.
 
 > **Controller-specific presets?** The generic template maps to *any* controller in a few minutes
 > via Capture (below), so this pack ships only the generic one. If you build a solid preset for a
@@ -43,7 +47,7 @@ split and route between hardware, virtual ports and DAWs, then speak wled-midi o
 
 ### 1. Create the virtual MIDI port your implementation listens on
 
-wled-midi implementations open a virtual input port (the [engine](https://github.com/openlamp/openlamp-engine-python)
+OpenLamp MIDI implementations open a virtual input port (the [engine](https://github.com/openlamp/openlamp-engine-python)
 calls it **`OpenLamp`**). Bome sends *to* that port.
 
 - **macOS** — Audio MIDI Setup → MIDI Studio → double-click **IAC Driver** → tick *Device is online* →
@@ -53,8 +57,8 @@ calls it **`OpenLamp`**). Bome sends *to* that port.
 
 ### 2. Import the translators into Bome
 
-1. Open Bome MIDI Translator Pro. `Preset → New Preset`, name it `wled-midi`.
-2. Open the pack file (e.g. [`wled-midi.generic.txt`](wled-midi.generic.txt)) in a text editor,
+1. Open Bome MIDI Translator Pro. `Preset → New Preset`, name it `OpenLamp MIDI`.
+2. Open the pack file (e.g. [`openlamp-midi.generic.txt`](openlamp-midi.generic.txt)) in a text editor,
    select a translator block, copy it.
 3. In Bome, select the preset and **paste** (`Ctrl/Cmd-V`) — the translator appears. Repeat per block,
    or paste the whole file's blocks at once.
@@ -64,14 +68,14 @@ calls it **`OpenLamp`**). Bome sends *to* that port.
 
 Each generic translator has a placeholder incoming message. Click the translator → **Incoming** tab →
 **Capture** → press the button/move the control on your hardware → Bome fills in the real MIDI. The
-outgoing wled-midi message is already set. Done.
+outgoing OpenLamp MIDI message is already set. Done.
 
 ### 4. Verify with ShowMIDI
 
 Route Bome's `OpenLamp` output into [ShowMIDI](https://github.com/gbevin/ShowMIDI) (or watch the engine
-log) and press a control — confirm the **right wled-midi note/CC** comes out before wiring the lamps.
+log) and press a control — confirm the **right OpenLamp MIDI note/CC** comes out before wiring the lamps.
 
-## The wled-midi target map (the outgoing side)
+## The OpenLamp MIDI target map (the outgoing side)
 
 Every translator in this pack emits one of these (channel 1 = all lamps; change the channel nibble to
 target a group). See the [SPEC](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md).
@@ -96,9 +100,9 @@ target a group). See the [SPEC](https://github.com/openlamp/openlamp-spec-midi/b
 ## Credits
 
 Built on [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator) (not affiliated).
-Part of the [OpenLamp](https://github.com/openlamp) / [wled-midi](https://github.com/openlamp/openlamp-spec-midi)
+Part of the [OpenLamp](https://github.com/openlamp) / [OpenLamp MIDI](https://github.com/openlamp/openlamp-spec-midi)
 project. MIT licensed — adapt freely.
 
 ---
 
-**Two open standards, one bridge.** This implements the open [**wled-midi**](https://github.com/openlamp/openlamp-spec-midi) convention — the agreed dictionary between [**MIDI**](https://midi.org) (the MIDI Association) and [**WLED**](https://kno.wled.ge). Free for anyone to build on: see the convention's [openness & patent policy](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md) (§14) and the [licensing note](https://github.com/openlamp/openlamp-spec-midi/blob/main/docs/licensing.md). Part of [OpenLamp](https://github.com/openlamp).
+**Two open standards, one bridge.** This implements the open [**OpenLamp MIDI**](https://github.com/openlamp/openlamp-spec-midi) convention — the agreed dictionary between [**MIDI**](https://midi.org) (the MIDI Association) and [**WLED**](https://kno.wled.ge). Free for anyone to build on: see the convention's [openness & patent policy](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md) (§14) and the [licensing note](https://github.com/openlamp/openlamp-spec-midi/blob/main/docs/licensing.md). Part of [OpenLamp](https://github.com/openlamp).

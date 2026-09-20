@@ -1,4 +1,6 @@
-# wled-midi — Bome MIDI Translator pack
+<p align="center"><img src="assets/banner.svg" alt="OpenLamp Bome Pack" width="100%"></p>
+
+# OpenLamp Bome Pack — Bome MIDI Translator pack
 
 **WLED, from a MIDI Translator user's point of view:** it's open-source firmware for addressable
 LED strips and bulbs that listens on a **local HTTP JSON API** (no cloud). You never touch that
@@ -9,7 +11,7 @@ emit that right MIDI from **any** controller, with **no code**.
 
 > **New to WLED? Understand it in 60 seconds** — what it is, its vocabulary, and the whole
 > MIDI→WLED map on one page: the **[WLED + MIDI quick reference »](https://github.com/openlamp/openlamp-spec-midi/blob/main/docs/quick-reference.md)**.
-> Full spec: **[openlamp/wled-midi »](https://github.com/openlamp/openlamp-spec-midi)**.
+> Full spec: **[openlamp/openlamp-spec-midi »](https://github.com/openlamp/openlamp-spec-midi)**.
 
 A controller sends whatever MIDI its firmware sends. This pack **re-labels** that MIDI into the
 [wled-midi](https://github.com/openlamp/openlamp-spec-midi) convention (the right notes / CC / Program

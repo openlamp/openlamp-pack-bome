@@ -8,11 +8,11 @@ preset). This pack makes **[Bome MIDI Translator Pro](https://www.bome.com/produ
 emit that right MIDI from **any** controller, with **no code**.
 
 > **New to WLED? Understand it in 60 seconds** — what it is, its vocabulary, and the whole
-> MIDI→WLED map on one page: the **[WLED + MIDI quick reference »](https://github.com/openlamp/wled-midi/blob/main/docs/quick-reference.md)**.
-> Full spec: **[openlamp/wled-midi »](https://github.com/openlamp/wled-midi)**.
+> MIDI→WLED map on one page: the **[WLED + MIDI quick reference »](https://github.com/openlamp/openlamp-spec-midi/blob/main/docs/quick-reference.md)**.
+> Full spec: **[openlamp/wled-midi »](https://github.com/openlamp/openlamp-spec-midi)**.
 
 A controller sends whatever MIDI its firmware sends. This pack **re-labels** that MIDI into the
-[wled-midi](https://github.com/openlamp/wled-midi) convention (the right notes / CC / Program
+[wled-midi](https://github.com/openlamp/openlamp-spec-midi) convention (the right notes / CC / Program
 Change) and emits it on a virtual MIDI port your wled-midi implementation listens to — merge,
 split and route between hardware, virtual ports and DAWs, then speak wled-midi out the other side.
 
@@ -41,7 +41,7 @@ split and route between hardware, virtual ports and DAWs, then speak wled-midi o
 
 ### 1. Create the virtual MIDI port your implementation listens on
 
-wled-midi implementations open a virtual input port (the [engine](https://github.com/openlamp/engine)
+wled-midi implementations open a virtual input port (the [engine](https://github.com/openlamp/openlamp-engine-python)
 calls it **`OpenLamp`**). Bome sends *to* that port.
 
 - **macOS** — Audio MIDI Setup → MIDI Studio → double-click **IAC Driver** → tick *Device is online* →
@@ -72,7 +72,7 @@ log) and press a control — confirm the **right wled-midi note/CC** comes out b
 ## The wled-midi target map (the outgoing side)
 
 Every translator in this pack emits one of these (channel 1 = all lamps; change the channel nibble to
-target a group). See the [SPEC](https://github.com/openlamp/wled-midi/blob/main/SPEC.md).
+target a group). See the [SPEC](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md).
 
 | Action | Outgoing MIDI (hex) |
 |---|---|
@@ -94,9 +94,9 @@ target a group). See the [SPEC](https://github.com/openlamp/wled-midi/blob/main/
 ## Credits
 
 Built on [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator) (not affiliated).
-Part of the [OpenLamp](https://github.com/openlamp) / [wled-midi](https://github.com/openlamp/wled-midi)
+Part of the [OpenLamp](https://github.com/openlamp) / [wled-midi](https://github.com/openlamp/openlamp-spec-midi)
 project. MIT licensed — adapt freely.
 
 ---
 
-**Two open standards, one bridge.** This implements the open [**wled-midi**](https://github.com/openlamp/wled-midi) convention — the agreed dictionary between [**MIDI**](https://midi.org) (the MIDI Association) and [**WLED**](https://kno.wled.ge). Free for anyone to build on: see the convention's [openness & patent policy](https://github.com/openlamp/wled-midi/blob/main/SPEC.md) (§14) and the [licensing note](https://github.com/openlamp/wled-midi/blob/main/docs/licensing.md). Part of [OpenLamp](https://github.com/openlamp).
+**Two open standards, one bridge.** This implements the open [**wled-midi**](https://github.com/openlamp/openlamp-spec-midi) convention — the agreed dictionary between [**MIDI**](https://midi.org) (the MIDI Association) and [**WLED**](https://kno.wled.ge). Free for anyone to build on: see the convention's [openness & patent policy](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md) (§14) and the [licensing note](https://github.com/openlamp/openlamp-spec-midi/blob/main/docs/licensing.md). Part of [OpenLamp](https://github.com/openlamp).
